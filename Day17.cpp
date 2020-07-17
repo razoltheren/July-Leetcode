@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+         std::ios::sync_with_stdio(false);
+        std::cin.tie(nullptr);
+        std::cout.tie(nullptr);
+        unordered_map<int, int> m;
+        priority_queue<pair<int, int>> q;
+        vector<int> res;
+        for (auto a : nums) ++m[a];
+        for (auto it : m) q.push({it.second, it.first});
+        for (int i = 0; i < k; ++i) {
+            res.push_back(q.top().second); q.pop();
+        }
+        return res;
+    }
+};
